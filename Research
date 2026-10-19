@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Konstantinos Spyrou</title>
 
+    <style>
+        body{
+            max-width:900px;
+            margin:auto;
+            padding:20px;
+            font-family:Arial, sans-serif;
+            line-height:1.6;
+        }
+
+        nav{
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        nav a{
+            margin:0 15px;
+            text-decoration:none;
+            color:#003366;
+            font-weight:bold;
+        }
+
+        h1{
+            color:#003366;
+        }
+
+        h2{
+            color:#005599;
+            margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a hreftmlHome</a>
+    <a hrefh.htmlResearch</a>
+</nav>
+
+<h1>Research</h1>
+
+<p>
+My research has focused on training load monitoring, physical performance, and injury prevention in team sports. More recently, my interests have expanded toward epidemiology, public health, and data analysis. I am increasingly interested in applying epidemiological methods and analytical approaches to understand health, injury, and performance in sports.
+</p>
+
+</body>
+</html>
