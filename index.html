@@ -146,7 +146,18 @@ h1, h2 {
     object-fit: contain;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
+#about,
+#research {
+    clear: both;
+    margin-top: 50px;
+}
+            
 <script>
 const groups = document.querySelectorAll('.partner-group');
 let current = 0;
@@ -184,6 +195,34 @@ setInterval(() => {
         <p>
             Professor | Researcher | Sports Scientist
         </p>
+
+        <div class="social-icons">
+            ...
+        </div>
+    </div>
+
+    <div class="header-photo">
+        <img src="your-photo.jpg" class="profile-photo">
+    </div>
+
+</div>
+
+<!-- END HEADER -->
+
+<section id="about">
+    <h2>About Me</h2>
+
+    <p>
+        Your biography...
+    </p>
+</section>
+
+<section id="research">
+    <h2>Research Interests</h2>
+
+    <p>Sports Science</p>
+    <p>Epidemiology</p>
+</section>
 
 </div>
 
