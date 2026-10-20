@@ -65,15 +65,26 @@ h1, h2 {
 }
             
 .header {
-    position: relative;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
 }
 
-.profile-photo{
-    width:180px;
-    border-radius:50%;
-    border:1px solid #003B7A;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+.header-text {
+    flex: 1;
+    text-align: left;
+}
+
+.header-photo {
+    flex-shrink: 0;
+}
+
+.profile-photo {
+    width: 220px;
+    border-radius: 50%;
+    border: 1px solid #003B7A;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .social-icons {
@@ -162,17 +173,24 @@ setInterval(() => {
 <body>
 
 <div class="header">
-    
-     <img src="konstantinos_spyrou_DSC05029 copia-web.jpg"
-     alt="Konstantinos Spyrou"
-     width="180"
-     class="profile-photo">
 
-    <h1>Konstantinos Spyrou</h1>
+    <div class="header-text">
+        <h1>Konstantinos Spyrou</h1>
 
-    <p class="subtitle">
-        Professor | Researcher | Sports Scientist 
-    </p>
+        <p>
+            Professor | Researcher | Sports Scientist
+        </p>
+
+        <div class="social-icons">
+            <!-- Your social icons remain here -->
+        </div>
+    </div>
+
+    <div class="header-photo">
+        <img src="your-photo-file-name.jpg" class="profile-photo">
+    </div>
+
+</div>
 
     <div class="social-icons">
 
