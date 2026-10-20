@@ -1,53 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin: 40px 0;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 3rem;
+    color: #003B7A;
+    margin: 0;
+}
+
+.stat-box p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+    
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Konstantinos Spyrou</title>
+    <title>Research</title>
 
     <style>
-        body{
-            max-width:900px;
-            margin:auto;
-            padding:20px;
-            font-family:Arial, sans-serif;
-            line-height:1.6;
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
         }
 
-        nav{
-            text-align:center;
-            margin-bottom:40px;
+        .stat-box {
+            text-align: center;
         }
 
-        nav a{
-            margin:0 15px;
-            text-decoration:none;
-            color:#003366;
-            font-weight:bold;
+        .stat-box h3 {
+            font-size: 3rem;
+            color: #003B7A;
+            margin: 0;
         }
 
-        h1{
-            color:#003366;
-        }
-
-        h2{
-            color:#005599;
-            margin-top:30px;
+        .stat-box p {
+            font-size: 1.1rem;
+            margin-top: 10px;
         }
     </style>
+
 </head>
+
 <body>
 
-<nav>
-    <a hreftmlHome</a>
-    <a hrefh.htmlResearch</a>
-</nav>
+    <h2>Research Overview</h2>
 
-<h1>Research</h1>
+    <div class="stats">
+        <div class="stat-box">
+            <h3 class="counter" data-target="42">0</h3>
+            <p>Publications</p>
+        </div>
 
-<p>
-My research has focused on training load monitoring, physical performance, and injury prevention in team sports. More recently, my interests have expanded toward epidemiology, public health, and data analysis. I am increasingly interested in applying epidemiological methods and analytical approaches to understand health, injury, and performance in sports.
-</p>
+        <div class="stat-box">
+            <h3 class="counter" data-target="13">0</h3>
+            <p>H-index</p>
+        </div>
+    </div>
+
+    <script>
+        const counters = document.querySelectorAll('.counter');
+
+        counters.forEach(counter => {
+            const target = Number(counter.dataset.target);
+            let count = 0;
+
+            const updateCounter = () => {
+                const increment = Math.max(1, target / 100);
+
+                if (count < target) {
+                    count += increment;
+                    counter.textContent = Math.min(Math.ceil(count), target);
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+
+            updateCounter();
+        });
+    </script>
 
 </body>
+
 </html>
