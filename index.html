@@ -212,6 +212,19 @@ setInterval(() => {
             <img src="kedavros.jpeg" alt="Kedavros">
             <img src="lifeergo.jpeg" alt="Life Ergo">
     </div>
+
+<script>
+const groups = document.querySelectorAll('.partner-group');
+let current = 0;
+
+setInterval(() => {
+    groups[current].classList.remove('active');
+
+    current = (current + 1) % groups.length;
+
+    groups[current].classList.add('active');
+}, 5000);
+</script>
 </section>
         
 
