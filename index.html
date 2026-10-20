@@ -1,315 +1,412 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-        <button onclick="window.location.href='research.html'"
-        class="research-button">
-    Research
-</button>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Konstantinos Spyrou | Sport Scientist</title>
+    <meta name="description" content="Konstantinos Spyrou, sport scientist (PhD) researching training load, performance, recovery and injury prevention in football and futsal.">
 
-        <button onclick="window.location.href='contact.html'"
-        class="research-button">
-    Contact
-</button>
-    
-
-    <title>Konstantinos Spyrou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --navy: #003B7A;
+            --blue: #1f6feb;
+            --ink: #1d2733;
+            --muted: #5b6673;
+            --line: #dfe5ec;
+            --tint: #f4f7fb;
+            --serif: "Newsreader", Georgia, "Times New Roman", serif;
+            --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: var(--sans);
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--ink);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { color: var(--navy); }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .wrap {
+            width: 100%;
             max-width: 1000px;
-            margin: auto;
-            padding: 40px;
-            line-height: 1.6;
-            color: #333;
+            margin: 0 auto;
+            padding: 0 28px;
         }
 
-        nav {
-            text-align: center;
-            margin-bottom: 40px;
+        /* Top navigation */
+        .site-nav {
+            border-bottom: 1px solid var(--line);
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        nav a {
+        .site-nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
             text-decoration: none;
-            color: #005a9c;
-            font-weight: bold;
-            margin: 0 10px;
+            color: var(--navy);
         }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            color: var(--navy);
+            background: var(--tint);
+        }
+
+        /* Header / intro */
+        .intro {
+            background: linear-gradient(180deg, var(--tint), #fff);
+            padding: 72px 0 56px;
+        }
+
+        .intro .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 56px;
+        }
+
+        .intro-text { flex: 1; }
 
         h1 {
-            color: #003366;
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: clamp(2.4rem, 5vw, 3.4rem);
+            line-height: 1.1;
+            margin: 0 0 12px;
+            color: var(--navy);
         }
+
+        .role {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin: 0 0 4px;
+        }
+
+        .affiliation {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 14px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: #fff;
+            align-items: center;
+            justify-content: center;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .social-icons a:hover {
+            border-color: var(--navy);
+            transform: translateY(-2px);
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .profile-photo {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 1px var(--navy), 0 10px 30px rgba(0, 59, 122, .18);
+            flex-shrink: 0;
+        }
+
+        /* Sections */
+        main { flex: 1; }
+
+        section { padding: 48px 0; }
 
         h2 {
-            color: #005a9c;
-            margin-top: 40px;
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.9rem;
+            color: var(--navy);
+            margin: 0 0 20px;
         }
-body {
-    background-color: white;
-}
 
-header {
-    background: #003B7A;
-    color: white;
-}
+        .prose { max-width: 70ch; }
+        .prose p { margin: 0; }
 
-h1, h2 {
-    color: #003B7A;
-}
+        .interests {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-.hero {
-    background: linear-gradient(135deg, #003B7A, #1f6feb);
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-}
-            
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-}
+        .interests li {
+            padding: 8px 16px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--tint);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
 
-.header-text {
-    flex: 1;
-    text-align: left;
-}
+        .cta-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
 
-.header-photo {
-    flex-shrink: 0;
-}
+        .btn {
+            display: inline-block;
+            padding: 11px 24px;
+            border-radius: 8px;
+            border: 2px solid var(--navy);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            color: var(--navy);
+            background: #fff;
+            transition: background .2s, color .2s;
+        }
 
-.profile-photo {
-    width: 220px;
-    border-radius: 50%;
-    border: 1px solid #003B7A;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-   .header-text .social-icons {
-    justify-content: flex-start;
-    margin-top: 20px;
-}
+        .btn:hover,
+        .btn.primary { background: var(--navy); color: #fff; }
+        .btn.primary:hover { background: #002a58; border-color: #002a58; }
 
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-}
+        /* Collaborations */
+        .partners { background: var(--tint); }
 
-.social-icons img {
-    width: 40px;
-    height: 40px;
-}
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            align-items: center;
+        }
 
-.research-button {
-    font-size: 24px;
-    font-weight: bold;
-    color: #003B7A;
-    background-color: white;
-    border: 2px solid #003B7A;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
+        .partner-grid figure {
+            margin: 0;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+        }
 
-.research-button:hover {
-    background-color: #003B7A;
-    color: white;
-}
+        .partner-grid img {
+            max-width: 100%;
+            max-height: 70px;
+            object-fit: contain;
+            filter: grayscale(1);
+            opacity: .75;
+            transition: filter .25s, opacity .25s;
+        }
 
-.partners {
-    text-align: center;
-    margin: 60px 0;
-}
+        .partner-grid figure:hover img {
+            filter: none;
+            opacity: 1;
+        }
 
-.partners h2 {
-    color: #003B7A;
-    margin-bottom: 20px;
-}
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 28px;
+            color: var(--muted);
+            font-size: .9rem;
+            border-top: 1px solid var(--line);
+        }
 
-.partner-group {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
+        /* Mobile */
+        @media (max-width: 720px) {
+            body { font-size: 17px; }
 
-.partner-group.active {
-    display: flex;
-}
+            .intro { padding: 40px 0 32px; }
 
-.partner-group img {
-    max-height: 90px;
-    max-width: 180px;
-    object-fit: contain;
-}
+            .intro .wrap {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 28px;
+            }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+            .social-icons { justify-content: center; }
+            .profile-photo { width: 190px; height: 190px; }
+            .brand { display: none; }
+            .site-nav .wrap { justify-content: center; }
+        }
 
-#about,
-#research {
-    clear: both;
-    margin-top: 50px;
-}
-            
-<script>
-const groups = document.querySelectorAll('.partner-group');
-let current = 0;
-
-setInterval(() => {
-    groups[current].classList.remove('active');
-
-    current++;
-    if (current >= groups.length) {
-        current = 0;
-    }
-
-    groups[current].classList.add('active');
-}, 5000);
-</script>
-            
- footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 20px;
-    color: #666;
-    font-size: 14px;
-}
-
-       
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
+        }
     </style>
 </head>
 <body>
 
-<div class="header">
+<nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+        <a class="brand" href="index.html">Konstantinos Spyrou</a>
+        <ul class="nav-links">
+            <li><a href="index.html" aria-current="page">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <div class="header-text">
-        <h1>Konstantinos Spyrou</h1>
+<header class="intro">
+    <div class="wrap">
+        <div class="intro-text">
+            <h1>Konstantinos Spyrou</h1>
+            <p class="role">Professor | Researcher | Sport Scientist</p>
+            <p class="affiliation">Nebrija University</p>
 
-        <p>
-            Professor | Researcher | Sports Scientist
-        </p>
-
-        <div class="social-icons">
-            ...
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/konstantinos-spyrou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <img src="descarga (2).png" alt="">
+                </a>
+                <a href="https://github.com/kospyrou-bit" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <img src="descarga (3).png" alt="">
+                </a>
+                <a href="https://scholar.google.com/citations?user=COyUvowAAAAJ&hl=el" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                    <img src="descarga (1).png" alt="">
+                </a>
+                <a href="https://orcid.org/0000-0002-5762-4653" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
+                    <img src="descarga.png" alt="">
+                </a>
+                <a href="https://www.researchgate.net/profile/Konstantinos-Spyrou-4" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">
+                    <img src="researchgate.svg" alt="">
+                </a>
+            </div>
         </div>
+
+        <img src="konstantinos_spyrou_DSC05029 copia-web.jpg" alt="Portrait of Konstantinos Spyrou" class="profile-photo">
     </div>
+</header>
 
-    <div class="header-photo">
-        <img src="your-photo.jpg" class="profile-photo">
-    </div>
+<main>
+    <section id="about">
+        <div class="wrap">
+            <h2>About me</h2>
+            <div class="prose">
+                <p>
+                    Konstantinos Spyrou is a sport scientist with a PhD in Sport Sciences and experience in both university teaching and applied sport science. His work focuses on football and futsal, particularly training load monitoring, physical performance, neuromuscular function, recovery, and injury prevention.
+                </p>
+                <p style="margin-top: 1em;">
+                    He is also interested in the application of research principles, epidemiology, and robust research methods to better understand sport-related questions in real-world settings. Through his research, he aims to contribute to practical, evidence-informed approaches that connect scientific findings with the needs of athletes, coaches, and practitioners.
+                </p>
+                <p style="margin-top: 1em;">
+                    He is currently involved in teaching and research at Nebrija University.
+                </p>
+            </div>
+            <div class="cta-row">
+                <a class="btn primary" href="research.html">View research</a>
+                <a class="btn" href="contact.html">Get in touch</a>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section id="research">
+        <div class="wrap">
+            <h2>Research interests</h2>
+            <ul class="interests">
+                <li>Football and futsal</li>
+                <li>Training load monitoring</li>
+                <li>Neuromuscular function and recovery</li>
+                <li>Injury prevention</li>
+                <li>Epidemiology</li>
+                <li>Research methods</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- END HEADER -->
+    <section class="partners" id="collaborations">
+        <div class="wrap">
+            <h2>Collaborations</h2>
+            <div class="partner-grid">
+                <figure><img src="uefa.jpeg" alt="UEFA"></figure>
+                <figure><img src="nebrija.jpeg" alt="Nebrija University"></figure>
+                <figure><img src="ciard.jpeg" alt="CIARD"></figure>
+                <figure><img src="fpf academy.jpeg" alt="FPF Academy"></figure>
+                <figure><img src="ucam_cf.png" alt="UCAM"></figure>
+                <figure><img src="el pozo.jpeg" alt="ElPozo"></figure>
+                <figure><img src="algaida.jpeg" alt="Algaida"></figure>
+                <figure><img src="pauloroberto.jpeg" alt="Paulo Roberto"></figure>
+                <figure><img src="panionios.jpeg" alt="Panionios"></figure>
+                <figure><img src="kedavros.jpeg" alt="Kedavros"></figure>
+                <figure><img src="lifeergo.jpeg" alt="Life Ergo"></figure>
+            </div>
+        </div>
+    </section>
+</main>
 
-<section id="about">
-    <h2>About Me</h2>
-
-    <p>
-        Your biography...
-    </p>
-</section>
-
-<section id="research">
-    <h2>Research Interests</h2>
-
-    <p>Sports Science</p>
-    <p>Epidemiology</p>
-</section>
-
-</div>
-
-    <div class="header-photo">
-        <img src="konstantinos_spyrou_DSC05029 copia-web.jpg" class="profile-photo">
-    </div>
-
-
-    <div class="social-icons">
-
-    <a href="https://www.linkedin.com/in/konstantinos-spyrou/?isSelfProfile=true" target="_blank"> 
-        <img src="descarga (2).png" alt="LinkedIn">
-    </a> 
-
-    <a href="https://github.com/kospyrou-bit" target="_blank">
-        <img src="descarga (3).png" alt="GitHub">
-    </a>
-
-    <a href="https://scholar.google.com/citations?user=COyUvowAAAAJ&hl=el" target="_blank">
-        <img src="descarga (1).png" alt="Google Scholar">
-    </a>
-
-    <a href="https://orcid.org/0000-0002-5762-4653" target="_blank">
-        <img src="descarga.png" alt="ORCID">
-     </a>
-        
-    <a href="https://www.researchgate.net/profile/Konstantinos-Spyrou-4?ev=hdr_xprf" target="_blank">
-        <img src="researchgate.svg" alt="ResearchGate">
-    </a>
-
-</div>
-
-    <h2 id="about">About Me</h2>
-
-    <p>
-        Konstantinos Spyrou is a sport scientist with a PhD in Sport Sciences and experience in both university teaching and applied sport science. His work focuses on football and futsal, particularly training load monitoring, physical performance, neuromuscular function, recovery, and injury prevention. He is also interested in the application of research principles, epidemiology, and robust research methods to better understand sport-related questions in real-world settings. Through his research, he aims to contribute to the development of practical, evidence-informed approaches that connect scientific findings with the needs of athletes, coaches, and practitioners. He is currently involved in teaching and research at Nebrija University.
-    </p>
-
-    <h2 id="research">Research Interests</h2>
-
-    <ul>
-        <p>Sports Science</p>
-        <p>Epidemiology</p>
-    </ul>
+<footer>
+    &copy; 2026 Konstantinos Spyrou. All rights reserved.
+</footer>
 
 </body>
-<section class="partners">
-    <h2>Collaborations</h2>
-
-    <div class="partner-group active">
-            <img src="uefa.jpeg" alt="Uefa">
-            <img src="nebrija.jpeg" alt="Nebrija">
-            <img src="ciard.jpeg" alt="Ciard">
-            <img src="fpf academy.jpeg" alt="FPF Academy">
-    </div>
-
-    <div class="partner-group">
-            <img src="ucam_cf.png" alt="Ucam">   
-            <img src="el pozo.jpeg" alt="El Pozo">   
-            <img src="algaida.jpeg" alt="Algaida">
-            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
-    </div>
-
-    <div class="partner-group">
-            <img src="panionios.jpeg" alt="Panionios">
-            <img src="kedavros.jpeg" alt="Kedavros">
-            <img src="lifeergo.jpeg" alt="Life Ergo">
-    </div>
-
-<script>
-const groups = document.querySelectorAll('.partner-group');
-let current = 0;
-
-setInterval(() => {
-    groups[current].classList.remove('active');
-
-    current = (current + 1) % groups.length;
-
-    groups[current].classList.add('active');
-}, 2000);
-</script>
-</section>
-        
-
-    </div>
-</section>
 </html>
-<footer>
-    © 2026 Konstantinos Spyrou. All rights reserved.
-</footer>
