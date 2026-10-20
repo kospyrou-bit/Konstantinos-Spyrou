@@ -1,71 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Research | Konstantinos Spyrou</title>
+    <meta name="description" content="Research by Konstantinos Spyrou in football and futsal sport science, and the PhD candidates he works with.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --navy: #003B7A;
+            --blue: #1f6feb;
+            --ink: #1d2733;
+            --muted: #5b6673;
+            --line: #dfe5ec;
+            --tint: #f4f7fb;
+            --serif: "Newsreader", Georgia, "Times New Roman", serif;
+            --sans: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        body {
+            margin: 0;
+            font-family: var(--sans);
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--ink);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { color: var(--navy); }
+
+        a:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Top navigation */
+        .site-nav {
+            border-bottom: 1px solid var(--line);
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .site-nav .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--muted);
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            color: var(--navy);
+            background: var(--tint);
+        }
+
+        /* Page heading */
+        .page-head {
+            background: linear-gradient(180deg, var(--tint), #fff);
+            padding: 56px 0 40px;
+        }
+
+        h1 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            line-height: 1.1;
+            margin: 0 0 12px;
+            color: var(--navy);
+        }
+
+        .lead {
+            margin: 0;
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Stats */
         .stats {
             display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin: 40px 0;
+            gap: 64px;
+            margin-top: 36px;
         }
 
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-box h3 {
-            font-size: 3rem;
-            color: #003B7A;
+        .stat-box h2 {
+            font-family: var(--serif);
+            font-size: 3.2rem;
+            line-height: 1;
+            font-weight: 600;
+            color: var(--navy);
             margin: 0;
         }
 
         .stat-box p {
-            font-size: 1.1rem;
-            margin-top: 10px;
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        main { flex: 1; }
+
+        section { padding: 44px 0; }
+
+        h2.section-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.9rem;
+            color: var(--navy);
+            margin: 0 0 8px;
+        }
+
+        .section-note {
+            margin: 0 0 28px;
+            color: var(--muted);
+            max-width: 62ch;
+        }
+
+        /* PhD students */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .person {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px 24px;
+        }
+
+        .person h3 {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin: 0 0 2px;
+        }
+
+        .person .role {
+            margin: 0 0 12px;
+            color: var(--muted);
+            font-size: .95rem;
+            font-weight: 600;
+        }
+
+        .person p { margin: 0; font-size: 1rem; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 28px;
+            color: var(--muted);
+            font-size: .9rem;
+            border-top: 1px solid var(--line);
+        }
+
+        /* Mobile */
+        @media (max-width: 720px) {
+            body { font-size: 17px; }
+            .brand { display: none; }
+            .site-nav .wrap { justify-content: center; }
+            .page-head { padding: 36px 0 28px; }
+            .stats { gap: 40px; }
+            .stat-box h2 { font-size: 2.6rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { transition: none !important; }
         }
     </style>
-
 </head>
-
 <body>
 
-    <h2>Research Overview</h2>
+<nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+        <a class="brand" href="index.html">Konstantinos Spyrou</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html" aria-current="page">Research</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <div class="stats">
-        <div class="stat-box">
-            <h3 class="counter" data-target="42">0</h3>
-            <p>Publications</p>
-        </div>
+<header class="page-head">
+    <div class="wrap">
+        <h1>Research</h1>
+        <p class="lead">
+            My research looks at training load, physical performance, neuromuscular function, recovery and injury prevention in football and futsal.
+        </p>
 
-        <div class="stat-box">
-            <h3 class="counter" data-target="13">0</h3>
-            <p>H-index</p>
+        <div class="stats">
+            <div class="stat-box">
+                <h2 class="counter" data-target="42">42</h2>
+                <p>Publications</p>
+            </div>
+            <div class="stat-box">
+                <h2 class="counter" data-target="13">13</h2>
+                <p>H-index</p>
+            </div>
         </div>
     </div>
+</header>
 
-    <script>
-        const counters = document.querySelectorAll('.counter');
+<main>
 
-        counters.forEach(counter => {
-            const target = Number(counter.dataset.target);
-            let count = 0;
+    <!-- ============ PHD CANDIDATES ============ -->
+    <section id="students">
+        <div class="wrap">
+            <h2 class="section-title">PhD candidates</h2>
+            <p class="section-note">
+                Doctoral students I supervise or co-supervise.
+            </p>
 
-            const updateCounter = () => {
-                const increment = Math.max(1, target / 100);
+            <div class="people-grid">
+                <!-- Copy this <article> block for each new student -->
+                <article class="person">
+                    <h3>Maziar J. Hamad</h3>
+                    <p class="role">2023 to ongoing</p>
+                    <p>Acute and residual neuromuscular responses of the hip adductors to match and training demands and their associations with external load in youth football players.</p>
+                </article>
 
-                if (count < target) {
-                    count += increment;
-                    counter.textContent = Math.min(Math.ceil(count), target);
-                    requestAnimationFrame(updateCounter);
-                }
-            };
+                <article class="person">
+                    <h3>Gastón R. Sánchez-Ottado</h3>
+                    <p class="role">2023 to ongoing</p>
+                    <p>Differences between barefoot and shod plyometric training in football players.</p>
+                </article>
 
-            updateCounter();
+                <article class="person">
+                    <h3>Thor Sigurdsson</h3>
+                    <p class="role">2023 to ongoing</p>
+                    <p>Differences between natural and artificial grass in physical and technical characteristics in football players.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2026 Konstantinos Spyrou. All rights reserved.
+</footer>
+
+<script>
+    // Count-up animation for the stats (skipped if the visitor prefers reduced motion)
+    (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        document.querySelectorAll('.counter').forEach(function (counter) {
+            var target = Number(counter.dataset.target);
+            var duration = 1200;
+            var start = null;
+
+            counter.textContent = '0';
+
+            function step(timestamp) {
+                if (start === null) start = timestamp;
+                var progress = Math.min((timestamp - start) / duration, 1);
+                counter.textContent = Math.round(target * progress);
+                if (progress < 1) requestAnimationFrame(step);
+            }
+
+            requestAnimationFrame(step);
         });
-    </script>
+    })();
+</script>
 
 </body>
 </html>
