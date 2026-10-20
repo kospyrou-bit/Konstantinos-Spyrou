@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<button onclick="window.location.href='research.html'"
+<head>
+        <button onclick="window.location.href='research.html'"
         class="research-button">
     Research
 </button>
@@ -10,7 +11,7 @@
     Contact
 </button>
     
-<head>
+
     <title>Konstantinos Spyrou</title>
 
     <style>
@@ -128,6 +129,14 @@ h1, h2 {
     max-height: 90px;
     max-width: 180px;
     object-fit: contain;
+}
+            .partners h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: white;
+    margin: 10px auto 0;
 }
 
 <script>
