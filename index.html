@@ -86,7 +86,7 @@
 
 .partners {
     text-align: center;
-    margin: 50px 0;
+    margin: 60px 0;
 }
 
 .partners h2 {
@@ -94,36 +94,38 @@
     margin-bottom: 20px;
 }
 
-.logo-slider {
-    overflow: hidden;
-    width: 100%;
-}
-
-.logo-track {
-    display: flex;
+.partner-group {
+    display: none;
+    justify-content: center;
     align-items: center;
-    animation: scroll 25s linear infinite;
-    width: max-content;
+    gap: 40px;
 }
 
-.logo-track img {
-    height: 70px;
-    width: auto;
-    margin: 0 25px;
+.partner-group.active {
+    display: flex;
 }
 
-.logo-track img:hover {
-    transform: scale(1.1);
+.partner-group img {
+    max-height: 90px;
+    max-width: 180px;
+    object-fit: contain;
 }
 
-@keyframes scroll {
-    from {
-        transform: translateX(100%);
+<script>
+const groups = document.querySelectorAll('.partner-group');
+let current = 0;
+
+setInterval(() => {
+    groups[current].classList.remove('active');
+
+    current++;
+    if (current >= groups.length) {
+        current = 0;
     }
-    to {
-        transform: translateX(-100%);
-    }
-}
+
+    groups[current].classList.add('active');
+}, 5000);
+</script>
             
  footer {
     margin-top: auto;
@@ -191,34 +193,28 @@
 <section class="partners">
     <h2>Collaborations</h2>
 
-    <div class="logo-slider">
-        <div class="logo-track">
-
+    <div class="partner-group active">
             <img src="uefa.jpeg" alt="Uefa">
             <img src="nebrija.jpeg" alt="Nebrija">
             <img src="ciard.jpeg" alt="Ciard">
             <img src="fpf academy.jpeg" alt="FPF Academy">
-            <img src="ucam_cf.png" alt="Ucam">   
-            <img src="el pozo.jpeg" alt="El Pozo">   
-            <img src="algaida.jpeg" alt="Algaida">
-            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
-            <img src="panionios.jpeg" alt="Panionios">
-            <img src="kedavros.jpeg" alt="Kedavros">
-            <img src="lifeergo.jpeg" alt="Life Ergo">
-            
-            <img src="uefa.jpeg" alt="Uefa">
-            <img src="nebrija.jpeg" alt="Nebrija">
-            <img src="ciard.jpeg" alt="Ciard">
-            <img src="fpf academy.jpeg" alt="FPF Academy">
-            <img src="ucam_cf.png" alt="Ucam">   
-            <img src="el pozo.jpeg" alt="El Pozo">   
-            <img src="algaida.jpeg" alt="Algaida">
-            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
-            <img src="panionios.jpeg" alt="Panionios">
-            <img src="kedavros.jpeg" alt="Kedavros">
-            <img src="lifeergo.jpeg" alt="Life Ergo">
+    </div>
 
-        </div>
+    <div class="partner-group">
+            <img src="ucam_cf.png" alt="Ucam">   
+            <img src="el pozo.jpeg" alt="El Pozo">   
+            <img src="algaida.jpeg" alt="Algaida">
+            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
+    </div>
+
+    <div class="partner-group">
+            <img src="panionios.jpeg" alt="Panionios">
+            <img src="kedavros.jpeg" alt="Kedavros">
+            <img src="lifeergo.jpeg" alt="Life Ergo">
+    </div>
+</section>
+        
+
     </div>
 </section>
 </html>
