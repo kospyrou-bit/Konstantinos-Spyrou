@@ -84,6 +84,47 @@
     color: white;
 }
 
+.partners {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.partners h2 {
+    color: #003B7A;
+    margin-bottom: 20px;
+}
+
+.logo-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+.logo-track {
+    display: flex;
+    align-items: center;
+    animation: scroll 25s linear infinite;
+    width: max-content;
+}
+
+.logo-track img {
+    height: 70px;
+    width: auto;
+    margin: 0 25px;
+}
+
+.logo-track img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+            
  footer {
     margin-top: auto;
     text-align: center;
@@ -147,7 +188,31 @@
     </ul>
 
 </body>
+<section class="partners">
+    <h2>Collaborations</h2>
 
+    <div class="logo-slider">
+        <div class="logo-track">
+
+            <img src="algaida.jpeg" alt="Algaida">
+            <img src="el pozo.jpeg" alt="El Pozo">
+            <img src="fpf academy.jpeg" alt="FPF Academy">
+            <img src="kedavros.jpeg" alt="Kedavros">
+            <img src="lifeergo.jpeg" alt="Life Ergo">
+            <img src="panionios.jpeg" alt="Panionios">
+            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
+
+            <img src="algaida.jpeg" alt="Algaida">
+            <img src="el pozo.jpeg" alt="El Pozo">
+            <img src="fpf academy.jpeg" alt="FPF Academy">
+            <img src="kedavros.jpeg" alt="Kedavros">
+            <img src="lifeergo.jpeg" alt="Life Ergo">
+            <img src="panionios.jpeg" alt="Panionios">
+            <img src="pauloroberto.jpeg" alt="Paulo Roberto">
+
+        </div>
+    </div>
+</section>
 </html>
 <footer>
     © 2026 Konstantinos Spyrou. All rights reserved.
