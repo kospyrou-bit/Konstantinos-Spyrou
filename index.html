@@ -167,6 +167,13 @@
             object-fit: contain;
         }
 
+        .osf-badge {
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .02em;
+            color: var(--navy);
+        }
+
         .profile-photo {
             width: 240px;
             height: 240px;
@@ -272,6 +279,105 @@
             opacity: 1;
         }
 
+        /* Moving logo bar */
+        .marquee {
+            overflow: hidden;
+            margin: 0 0 40px;
+            padding: 18px 0;
+            background: #fff;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            width: max-content;
+            animation: scroll-left 40s linear infinite;
+        }
+
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+
+        .marquee-track img {
+            height: 56px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            filter: grayscale(1);
+            opacity: .75;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll-left {
+            to { transform: translateX(calc(-50% - 32px)); }
+        }
+
+        /* Stable affiliations box */
+        .affil-box {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 8px 32px;
+        }
+
+        .affil-group {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .affil-group:last-child { border-bottom: 0; }
+
+        .affil-group h3 {
+            margin: 0 0 14px;
+            font-family: var(--sans);
+            font-size: .85rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .affil-logos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .affil-logos figure {
+            margin: 0;
+            width: 150px;
+            height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .affil-logos img {
+            max-width: 100%;
+            max-height: 56px;
+            object-fit: contain;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee { -webkit-mask-image: none; mask-image: none; }
+            .marquee-track {
+                animation: none;
+                width: auto;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 24px 40px;
+                padding: 0 28px;
+            }
+            .marquee-track img[alt=""] { display: none; }
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -323,7 +429,7 @@
         <div class="intro-text">
             <h1>Konstantinos Spyrou</h1>
             <p class="role">Professor | Researcher | Sport Scientist</p>
-            <p class="affiliation">Nebrija University, Madrid, Spain</p>
+            <p class="affiliation">Nebrija University</p>
 
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/konstantinos-spyrou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -340,6 +446,9 @@
                 </a>
                 <a href="https://www.researchgate.net/profile/Konstantinos-Spyrou-4" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">
                     <img src="researchgate.svg" alt="">
+                </a>
+                <a href="https://osf.io/profile" target="_blank" rel="noopener noreferrer" aria-label="OSF">
+                    <span class="osf-badge">OSF</span>
                 </a>
             </div>
         </div>
@@ -374,9 +483,9 @@
         <div class="wrap">
             <h2>Research interests</h2>
             <ul class="interests">
-                <li>Training load</li>
-                <li>Neuromuscular performance</li>
-                <li>Sports Medicine</li>
+                <li>Football and futsal</li>
+                <li>Training load monitoring</li>
+                <li>Neuromuscular function and recovery</li>
                 <li>Injury prevention</li>
                 <li>Epidemiology</li>
                 <li>Research methods</li>
@@ -386,20 +495,73 @@
 
     <section class="partners" id="collaborations">
         <div class="wrap">
-            <h2>Collaborations - Affiliations</h2>
-            <div class="partner-grid">
-                <figure><img src="uefa.jpeg" alt="UEFA"></figure>
-                <figure><img src="nebrija.jpeg" alt="Nebrija University"></figure>
-                <figure><img src="ciard.jpeg" alt="CIARD"></figure>
-                <figure><img src="fpf academy.jpeg" alt="FPF Academy"></figure>
-                <figure><img src="ucam_cf.png" alt="UCAM"></figure>
-                <figure><img src="el pozo.jpeg" alt="ElPozo"></figure>
-                <figure><img src="algaida.jpeg" alt="Algaida"></figure>
-                <figure><img src="pauloroberto.jpeg" alt="Paulo Roberto"></figure>
-                <figure><img src="ffrm.jpeg" alt="FFRM"></figure>
-                <figure><img src="panionios.jpeg" alt="Panionios"></figure>
-                <figure><img src="kedavros.jpeg" alt="Kedavros"></figure>
-                <figure><img src="lifeergo.jpeg" alt="Life Ergo"></figure>
+            <h2>Affiliations and collaborations</h2>
+        </div>
+
+        <!-- Moving bar: all logos scroll slowly; pauses on hover -->
+        <div class="marquee" aria-label="Organisations I have worked with">
+            <div class="marquee-track">
+                    <img src="nebrija.jpeg" alt="Nebrija University">
+                    <img src="ucam_cf.png" alt="UCAM">
+                    <img src="uefa.jpeg" alt="UEFA">
+                    <img src="ciard.jpeg" alt="CIARD">
+                    <img src="fpf academy.jpeg" alt="FPF Academy">
+                    <img src="el pozo.jpeg" alt="ElPozo">
+                    <img src="algaida.jpeg" alt="Algaida">
+                    <img src="pauloroberto.jpeg" alt="Paulo Roberto">
+                    <img src="panionios.jpeg" alt="Panionios">
+                    <img src="kedavros.jpeg" alt="Kedavros">
+                    <img src="lifeergo.jpeg" alt="Life Ergo">
+                    <img src="nebrija.jpeg" alt="">
+                    <img src="ucam_cf.png" alt="">
+                    <img src="uefa.jpeg" alt="">
+                    <img src="ciard.jpeg" alt="">
+                    <img src="fpf academy.jpeg" alt="">
+                    <img src="el pozo.jpeg" alt="">
+                    <img src="algaida.jpeg" alt="">
+                    <img src="pauloroberto.jpeg" alt="">
+                    <img src="panionios.jpeg" alt="">
+                    <img src="kedavros.jpeg" alt="">
+                    <img src="lifeergo.jpeg" alt="">
+            </div>
+        </div>
+
+        <!-- Stable box: logos grouped by relationship -->
+        <div class="wrap">
+            <div class="affil-box">
+                <div class="affil-group">
+                    <h3>Current affiliation</h3>
+                    <div class="affil-logos">
+                        <figure><img src="nebrija.jpeg" alt="Nebrija University"></figure>
+                    </div>
+                </div>
+                <div class="affil-group">
+                    <h3>Previous experience</h3>
+                    <div class="affil-logos">
+                        <figure><img src="ciard.jpeg" alt="CIARD"></figure>
+                        <figure><img src="lifeergo.jpeg" alt="Life Ergo"></figure>
+                    </div>
+                </div>
+                    </div>
+                </div>
+                <div class="affil-group">
+                    <h3>Collaborations: teams</h3>
+                    <div class="affil-logos">
+                         <figure><img src="ucam_cf.png" alt="UCAM"></figure>
+                        <figure><img src="el pozo.jpeg" alt="ElPozo"></figure>
+                        <figure><img src="algaida.jpeg" alt="Algaida"></figure>
+                        <figure><img src="pauloroberto.jpeg" alt="Paulo Roberto"></figure>
+                        <figure><img src="panionios.jpeg" alt="Panionios"></figure>
+                        <figure><img src="kedavros.jpeg" alt="Kedavros"></figure>
+                    </div>
+                </div>
+                <div class="affil-group">
+                    <h3>Collaborations: federations</h3>
+                    <div class="affil-logos">
+                        <figure><img src="uefa.jpeg" alt="UEFA"></figure>
+                        <figure><img src="fpf academy.jpeg" alt="FPF Academy"></figure>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
