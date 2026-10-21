@@ -197,7 +197,15 @@
         }
  
         .person p { margin: 0; font-size: 1rem; }
- 
+
+        .section-note {
+    margin: 0 0 8px;
+    color: var(--muted);
+    max-width: 62ch;
+}
+
+#publications { border-bottom: 1px solid var(--line); }
+        
         /* Footer */
         footer {
             text-align: center;
@@ -273,7 +281,21 @@
 </header>
  
 <main>
- 
+ <main>
+
+    <!-- ============ PUBLICATIONS ============ -->
+    <section id="publications">
+        <div class="wrap">
+            <h2 class="section-title">Publications</h2>
+            <p class="section-note">
+                Selected publications by topic. The full list is on
+                <a href="https://scholar.google.com/citations?user=COyUvowAAAAJ&hl=el" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- the next section goes here -->
+     
     <!-- ============ PHD CANDIDATES ============ -->
     <section id="students">
         <div class="wrap">
