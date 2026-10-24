@@ -29,8 +29,16 @@ Notes · HTML
 </head>
 <body>
  
-  <!-- 3. Paste your existing menu/header here so it looks like your other pages,
-          and add:  <a href="notes.html">Notes</a>  -->
+  <nav class="site-nav" aria-label="Main">
+    <div class="wrap">
+        <a class="brand" href="index.html">Konstantinos Spyrou</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html" aria-current="page">Research</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
  
   <main class="notes-wrap">
     <h1>Notes</h1>
