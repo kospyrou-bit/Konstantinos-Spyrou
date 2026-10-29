@@ -197,15 +197,123 @@
         }
  
         .person p { margin: 0; font-size: 1rem; }
-
+ 
         .section-note {
     margin: 0 0 8px;
     color: var(--muted);
     max-width: 62ch;
 }
-
+ 
 #publications { border-bottom: 1px solid var(--line); }
         
+        /* Filterable publication list */
+        .pub-tools { margin-top: 24px; }
+ 
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+ 
+        .chip {
+            font: inherit;
+            font-size: .92rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--navy);
+            cursor: pointer;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+ 
+        .chip span {
+            font-weight: 400;
+            color: var(--muted);
+            margin-left: 4px;
+        }
+ 
+        .chip:hover { border-color: var(--navy); }
+ 
+        .chip.active {
+            background: var(--navy);
+            border-color: var(--navy);
+            color: #fff;
+        }
+ 
+        .chip.active span { color: #cfe0f5; }
+ 
+        .chip:focus-visible,
+        .pub-search:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 2px;
+        }
+ 
+        .search-label {
+            display: block;
+            margin: 20px 0 6px;
+            font-size: .95rem;
+            font-weight: 600;
+        }
+ 
+        .pub-search {
+            width: 100%;
+            max-width: 420px;
+            font: inherit;
+            font-size: 1rem;
+            padding: 10px 14px;
+            border: 1px solid #b9c4d0;
+            border-radius: 8px;
+        }
+ 
+        .pub-count {
+            margin: 14px 0 0;
+            font-size: .95rem;
+            color: var(--muted);
+        }
+ 
+        .pub-all {
+            list-style: none;
+            margin: 8px 0 0;
+            padding: 0;
+        }
+ 
+        .pub-all li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--line);
+        }
+ 
+        .pub-all li[hidden] { display: none; }
+ 
+        .pub-title { font-weight: 600; }
+ 
+        .pub-meta {
+            display: block;
+            font-size: .95rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+ 
+        .pub-meta strong { color: var(--ink); }
+ 
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+ 
+        .pill {
+            font-size: .8rem;
+            font-weight: 600;
+            padding: 1px 10px;
+            border-radius: 999px;
+            background: var(--tint);
+            border: 1px solid var(--line);
+            color: var(--navy);
+        }
+ 
         /* Footer */
         footer {
             text-align: center;
@@ -282,18 +390,264 @@
 </header>
  
 <main>
-
+ 
     <!-- ============ PUBLICATIONS ============ -->
     <section id="publications">
         <div class="wrap">
             <h2 class="section-title">Publications</h2>
             <p class="section-note">
-                Selected publications by topic. The full list is on
+                Filter my publications by topic or search the titles. The list is also on
                 <a href="https://scholar.google.com/citations?user=COyUvowAAAAJ&hl=el" target="_blank" rel="noopener noreferrer">Google Scholar</a>.
             </p>
+ 
+            <div class="pub-tools">
+                <div class="chip-row" role="group" aria-label="Filter publications by topic">
+                    <button type="button" class="chip active" data-filter="none" aria-pressed="true">None</button>
+                    <button type="button" class="chip" data-filter="all" aria-pressed="false">All <span>45</span></button>
+                    <button type="button" class="chip" data-filter="football" aria-pressed="false">Football <span>17</span></button>
+                    <button type="button" class="chip" data-filter="futsal" aria-pressed="false">Futsal <span>18</span></button>
+                    <button type="button" class="chip" data-filter="neuromuscular-performance" aria-pressed="false">Neuromuscular performance <span>17</span></button>
+                    <button type="button" class="chip" data-filter="match-demands-and-load" aria-pressed="false">Match demands and load <span>14</span></button>
+                    <button type="button" class="chip" data-filter="adductors" aria-pressed="false">Adductors <span>4</span></button>
+                    <button type="button" class="chip" data-filter="injuries" aria-pressed="false">Injuries <span>4</span></button>
+                    <button type="button" class="chip" data-filter="reviews" aria-pressed="false">Reviews <span>4</span></button>
+                    <button type="button" class="chip" data-filter="editorials-and-meetings" aria-pressed="false">Editorials and meetings <span>4</span></button>
+                </div>
+                <label class="search-label" for="pub-search">Search titles</label>
+                <input type="search" id="pub-search" class="pub-search" placeholder="Search titles, e.g. countermovement">
+                <p class="pub-count" id="pub-count" aria-live="polite">Select a topic, or press All, to show the publications.</p>
+            </div>
+ 
+            <ul class="pub-all" id="pub-all">
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">Quantification of weekly external load in female futsal players: considering inter-day and -player variability</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Ribeiro JN, Alcaraz PE, Freitas TT, Travassos B. <em>Research Quarterly for Exercise and Sport</em>. 2026;97(1):52–59.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="football neuromuscular-performance adductors">
+                    <span class="pub-title">Match-related acute and residual changes of hip-adduction strength in youth soccer players</span>
+                    <span class="pub-meta">Hamad MJ, Alcaraz PE, Thorborg K, Martínez-Serrano A, <strong>Spyrou K</strong>. <em>Journal of Human Kinetics</em>. 2026;102:75–86.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Neuromuscular performance</span><span class="pill">Adductors</span></span>
+                </li>
+                <li data-tags="football neuromuscular-performance adductors">
+                    <span class="pub-title">The acute effect of training on hip-adduction strength within a football microcycle</span>
+                    <span class="pub-meta">Hamad M, Alcaraz PE, Thorborg K, Barrett S, <strong>Spyrou K</strong>. <em>Biology of Sport</em>. 2026;43(1):1243–1251.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Neuromuscular performance</span><span class="pill">Adductors</span></span>
+                </li>
+                <li data-tags="football match-demands-and-load">
+                    <span class="pub-title">The effects of playing surface on external load in professional male football: artificial versus natural grass</span>
+                    <span class="pub-meta">Sigurdsson T, Freitas TT, <strong>Spyrou K</strong>. <em>Football Studies</em>. 2026;100057.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="editorials-and-meetings">
+                    <span class="pub-title">Advances in training optimization: performance, health, and injury prevention in sport</span>
+                    <span class="pub-meta">Marín-Cascales E, <strong>Spyrou K</strong>, Alcaraz PE, Freitas TT. <em>Cultura, Ciencia y Deporte</em>. 2026;21(68).</span>
+                    <span class="pill-row"><span class="pill">Editorials and meetings</span></span>
+                </li>
+                <li data-tags="football injuries">
+                    <span class="pub-title">Intra- and inter-rater reliability of a systematic video analysis of ACL injuries in elite men’s football</span>
+                    <span class="pub-meta">Oliveira SF, Castela MM, <strong>Spyrou K</strong>, Veloso AP, Brito J. <em>Sports</em>. 2026;14(7):284.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Injuries</span></span>
+                </li>
+                <li data-tags="futsal">
+                    <span class="pub-title">Impact of combined horizontal plyometrics and linear sprints on physical performance in youth male futsal players: a 14-week study across different seasonal phases</span>
+                    <span class="pub-meta">Neves TA, <strong>Spyrou K</strong>, Guerra RL. <em>Football Studies</em>. 2026;100068.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span></span>
+                </li>
+                <li data-tags="futsal">
+                    <span class="pub-title">The FITP: a controlled intermittent running test for futsal athletes</span>
+                    <span class="pub-meta">Ribeiro JN, Yousefian F, Bartolomeu RF, Martins F, <strong>Spyrou K</strong>, Travassos B, Vila-Chã C, Esteves PT. <em>Journal of Functional Morphology and Kinesiology</em>. 2026;11(3):296.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span></span>
+                </li>
+                <li data-tags="neuromuscular-performance">
+                    <span class="pub-title">Early-season changes in concentric-only, long and short stretch–shortening cycle jump performance in highly trained youth basketball players</span>
+                    <span class="pub-meta">Freitas TT, Marinos S, Koudounis G, <strong>Spyrou K</strong>, Marín-Cascales E. <em>Annals of Medicine</em>. 2026;58(1):2714668.</span>
+                    <span class="pill-row"><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance adductors">
+                    <span class="pub-title">Hip-adductor strength declines across a futsal tournament and is associated with internal load in under-19 female players</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Granea LM, Alcaraz PE, Hamad MJ. <em>Women in Sport and Physical Activity Journal</em>. 2026;34(1).</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span><span class="pill">Adductors</span></span>
+                </li>
+                <li data-tags="football injuries">
+                    <span class="pub-title">A retrospective systematic video analysis of reported ACL injury events in professional male football across European competitions</span>
+                    <span class="pub-meta">Oliveira SF, Castella MM, <strong>Spyrou K</strong>, Veloso AP, Brito J. <em>Applied Sciences</em>. 2026;16(19):9932.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Injuries</span></span>
+                </li>
+                <li data-tags="football match-demands-and-load adductors">
+                    <span class="pub-title">Are running, speed change and kicking metrics during football training associated with reductions in hip adductor strength?</span>
+                    <span class="pub-meta">Hamad MJ, Alcaraz PE, Thorborg K, Barrett S, <strong>Spyrou K</strong>. <em>International Journal of Sports Science and Coaching</em>. 2026;17479541261490037.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Match demands and load</span><span class="pill">Adductors</span></span>
+                </li>
+                <li data-tags="football neuromuscular-performance">
+                    <span class="pub-title">Differences in countermovement and drop jump performance, kinetics and kinematics during barefoot and shod jumping in youth soccer players</span>
+                    <span class="pub-meta">Sanchez-Ottado GR, Freitas TT, <strong>Spyrou K</strong>. <em>International Journal of Sports Science and Coaching</em>. 2026;17479541261498566.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="match-demands-and-load">
+                    <span class="pub-title">Bridging the gap between training and competition in elite rink hockey: a pilot study</span>
+                    <span class="pub-meta">Ferraz A, Pérez-Chao EA, Ribeiro J, <strong>Spyrou K</strong>, Freitas TT, Valente-dos-Santos J, Duarte-Mendes P, Alcaraz PE, Travassos B. <em>Sports Health</em>. 2025;17(1):57–65.</span>
+                    <span class="pill-row"><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">The influence of game intervals on physical performance demands in elite futsal: insights from congested periods</span>
+                    <span class="pub-meta">Pereira A, Ribeiro JN, Alcaraz PE, Carrasco RH, Travassos B, Freitas TT, <strong>Spyrou K</strong>. <em>Sports</em>. 2025;13(2):56.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="neuromuscular-performance">
+                    <span class="pub-title">Profiling the countermovement jump characteristics of basketball players across competitive levels and playing positions</span>
+                    <span class="pub-meta">Suárez-Balsera C, Ferioli D, Marín-Cascales E, Rago V, <strong>Spyrou K</strong>, Martínez-Serrano A, Di Mauro D, Marín JM, Alcaraz PE, Freitas TT. <em>Journal of Human Kinetics</em>. 2025;96(Spec Issue):83.</span>
+                    <span class="pill-row"><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="editorials-and-meetings">
+                    <span class="pub-title">Strength and conditioning society (SCS) 7th annual meeting, Murcia, Spain, 2024</span>
+                    <span class="pub-meta">Alcaraz PE, <strong>Spyrou K</strong>, Blazevich AJ, Freitas TT, Marín-Cascales E, Manzanares Serrano A. <em>MDPI</em>. 2025.</span>
+                    <span class="pill-row"><span class="pill">Editorials and meetings</span></span>
+                </li>
+                <li data-tags="neuromuscular-performance reviews">
+                    <span class="pub-title">Effects of plyometric training performed on different surfaces and with different types of footwear on the neuromuscular performance of team-sport athletes: a systematic review</span>
+                    <span class="pub-meta">Sanchez-Ottado GR, <strong>Spyrou K</strong>, Pereira LA, Alcaraz PE, Zabaloy S, Loturco I, Freitas T. <em>Biology of Sport</em>. 2025;42(4):107–123.</span>
+                    <span class="pill-row"><span class="pill">Neuromuscular performance</span><span class="pill">Reviews</span></span>
+                </li>
+                <li data-tags="football match-demands-and-load">
+                    <span class="pub-title">Differences in the relative external load demands of pre-competitive warm-ups and official matches in semi-professional football players: a pilot study considering specific positions</span>
+                    <span class="pub-meta">Escudero-Ferrer JM, Martínez-Aranda LM, Sanz-Matesanz M, <strong>Spyrou K</strong>, Alcaraz PE, Raya-González J. <em>Journal of Functional Morphology and Kinesiology</em>. 2025;10(2):182.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">Load monitoring, strength training, and recovery in futsal: practitioners’ perspectives</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Freitas TT, Herrero Carrasco R, Marín-Cascales E, Alcaraz PE. <em>Science and Medicine in Football</em>. 2024;8(1):76–83.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="football neuromuscular-performance">
+                    <span class="pub-title">Relative age, biological maturation, body composition, and physical performance in under-16 academy soccer players: differences and associations among early and late born athletes</span>
+                    <span class="pub-meta">Fink B, Freitas TT, De Marzo C, <strong>Spyrou K</strong>, Pereira LA, Loturco I, Zabaloy S. <em>Sport Sciences for Health</em>. 2024;20(1):165–176.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="football">
+                    <span class="pub-title">The effect of menthol rinsing before intermittent exercise on physiological, physical, and thermo-behavioral responses of male football referees in hot and humid environment</span>
+                    <span class="pub-meta">Roriz M, Brito J, Teixeira FJ, <strong>Spyrou K</strong>, Teixeira VH. <em>Frontiers in Sports and Active Living</em>. 2024;6:1334739.</span>
+                    <span class="pill-row"><span class="pill">Football</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance">
+                    <span class="pub-title">A more thorough analysis of the countermovement jump demonstrates changes in neuromuscular performance during pre and early competitive season in elite futsal players</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Alcaraz PE, Marín-Cascales E, Cohen DD, Freitas TT. <em>Sport Sciences for Health</em>. 2024;20(3):837–842.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance">
+                    <span class="pub-title">Exploring countermovement jump variables across competitive levels and playing positions in futsal</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Alcaraz PE, Martínez-Serrano A, Marín-Cascales E, Ferioli D, Contreras JPS, Ribeiro JN, Travassos B, Freitas TT. <em>Frontiers in Sports and Active Living</em>. 2024;6:1371467.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="editorials-and-meetings">
+                    <span class="pub-title">SCS 6th annual meeting—EEVFA—11th international congress of biochemistry and physiology of exercise, Athens, Greece, 2023</span>
+                    <span class="pub-meta">Alcaraz PE, Marín-Cascales E, Blazevich AJ, Freitas TT, Donti O, <strong>Spyrou K</strong>, Bogdanis GC. <em>MDPI</em>. 2024.</span>
+                    <span class="pill-row"><span class="pill">Editorials and meetings</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance">
+                    <span class="pub-title">Does total playing time affect the neuromuscular, physiological, and subjective recovery of futsal players during a congested period?</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Armendáriz MLP, Alcaraz PE, Carrasco RH, Udayanga MS, Freitas TT. <em>Sports</em>. 2024;12(5):139.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="futsal injuries editorials-and-meetings">
+                    <span class="pub-title">Performance enhancement and injury mitigation in futsal</span>
+                    <span class="pub-meta">Travassos B, Ribeiro JN, Freitas TT, Alcaraz PE, <strong>Spyrou K</strong>. <em>Frontiers in Sports and Active Living</em>. 2024;6:1446031.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Injuries</span><span class="pill">Editorials and meetings</span></span>
+                </li>
+                <li data-tags="match-demands-and-load reviews">
+                    <span class="pub-title">Match demands of female team sports: a scoping review</span>
+                    <span class="pub-meta">Armendáriz MLP, <strong>Spyrou K</strong>, Alcaraz PE. <em>Biology of Sport</em>. 2024;41(1):175–199.</span>
+                    <span class="pill-row"><span class="pill">Match demands and load</span><span class="pill">Reviews</span></span>
+                </li>
+                <li data-tags="football neuromuscular-performance">
+                    <span class="pub-title">Effects of two in-season short high-intensity interval training formats on aerobic and neuromuscular performance in young soccer players</span>
+                    <span class="pub-meta">Thomakos P, Tsekos P, Tselios Z, <strong>Spyrou K</strong>, Katsikas C, Tsoukos A, Bogdanis GC. <em>Journal of Sports Science and Medicine</em>. 2024;23(4):812.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="football">
+                    <span class="pub-title">Effects of concurrent high-intensity and strength training on muscle power and aerobic performance in young soccer players during the pre-season</span>
+                    <span class="pub-meta">Thomakos P, <strong>Spyrou K</strong>, Katsikas C, Geladas ND, Bogdanis GC. <em>Sports</em>. 2023;11(3):59.</span>
+                    <span class="pill-row"><span class="pill">Football</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance">
+                    <span class="pub-title">Neuromuscular performance changes in elite futsal players over a competitive season</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Alcaraz PE, Marín-Cascales E, Herrero-Carrasco R, Cohen DD, Freitas TT. <em>Journal of Strength and Conditioning Research</em>. 2023;37(5):1111–1116.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="neuromuscular-performance">
+                    <span class="pub-title">Reliability of maximal strength and peak rate of force development in a portable Nordic hamstrings exercise device</span>
+                    <span class="pub-meta">Costa JA, <strong>Spyrou K</strong>, Sancho A, Reis JF, Brito J. <em>Sensors</em>. 2023;23(12):5452.</span>
+                    <span class="pill-row"><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="football">
+                    <span class="pub-title">Effects of high-intensity interval training versus sprint interval training during the second wave of COVID-19 lockdown on soccer players</span>
+                    <span class="pub-meta">Thomakos P, <strong>Spyrou K</strong>. <em>Apunts Sports Medicine</em>. 2023;58(218):100414.</span>
+                    <span class="pill-row"><span class="pill">Football</span></span>
+                </li>
+                <li data-tags="football match-demands-and-load">
+                    <span class="pub-title">Effective playing time affects technical-tactical and physical parameters in football</span>
+                    <span class="pub-meta">Tojo Ó, <strong>Spyrou K</strong>, Teixeira J, Pereira P, Brito J. <em>Frontiers in Sports and Active Living</em>. 2023;5:1229595.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">Interpreting match performance in elite futsal: considerations for normalizing variables using effective time</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Ribeiro JN, Ferraz A, Alcaraz PE, Freitas TT, Travassos B. <em>Frontiers in Sports and Active Living</em>. 2023;5:1256424.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance match-demands-and-load">
+                    <span class="pub-title">Match demands, players’ characteristics and neuromuscular performance across the season in elite futsal players</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>. PhD thesis. 2023.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="football">
+                    <span class="pub-title">High-intensity interval training combined with high-load strength training improves aerobic fitness, match goals and match result during the in-season period in under-19 soccer players</span>
+                    <span class="pub-meta">Thomakos P, <strong>Spyrou K</strong>, Tsoukos A, Katsikas C, Bogdanis GC. <em>Sports</em>. 2023;12(1):2.</span>
+                    <span class="pill-row"><span class="pill">Football</span></span>
+                </li>
+                <li data-tags="football">
+                    <span class="pub-title">Menthol mouth rinsing and performance in elite football referees in the heat: a study protocol for a randomized crossover trial</span>
+                    <span class="pub-meta">Roriz M, Brito J, Teixeira FJ, <strong>Spyrou K</strong>, Teixeira VH. <em>Contemporary Clinical Trials Communications</em>. 2023;35:101202.</span>
+                    <span class="pill-row"><span class="pill">Football</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">External match load and the influence of contextual factors in elite futsal</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Freitas TT, Marín-Cascales E, Herrero-Carrasco R, Alcaraz PE. <em>Biology of Sport</em>. 2022;39(2):349–354.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="futsal injuries">
+                    <span class="pub-title">Injury rates following the COVID-19 lockdown: a case study from an UEFA futsal champions league finalist</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Alcaraz PE, Marín-Cascales E, Herrero-Carrasco R, Pereira LA, Loturco I, Freitas TT. <em>Apunts Sports Medicine</em>. 2022;57(213):100377.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Injuries</span></span>
+                </li>
+                <li data-tags="football reviews">
+                    <span class="pub-title">The time course of postmatch physical impairments in professional soccer: a systematic review</span>
+                    <span class="pub-meta">Drayton AM, Hamad MJ, <strong>Spyrou K</strong>. <em>Journal of Strength and Conditioning Research</em>. 2022.</span>
+                    <span class="pill-row"><span class="pill">Football</span><span class="pill">Reviews</span></span>
+                </li>
+                <li data-tags="futsal neuromuscular-performance">
+                    <span class="pub-title">Effects of the COVID-19 lockdown on neuromuscular performance and body composition in elite futsal players</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Alcaraz PE, Marín-Cascales E, Herrero-Carrasco R, Cohen DD, Calleja-Gonzalez J, Pereira LA, Loturco I, Freitas TT. <em>Journal of Strength and Conditioning Research</em>. 2021;35(8):2309–2315.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load">
+                    <span class="pub-title">Differences between official and non-official matches in worst-case scenarios in elite futsal players</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Freitas TT, Marín-Cascales E, Herrero-Carrasco R, Alcaraz PE. <em>Baltic Journal of Health and Physical Activity</em>. 2021;13(4):5.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span></span>
+                </li>
+                <li data-tags="neuromuscular-performance">
+                    <span class="pub-title">Electromyography, stiffness and kinematics of resisted sprint training in the specialized SKILLRUN® treadmill using different load conditions in rugby players</span>
+                    <span class="pub-meta">Martínez-Serrano A, Marín-Cascales E, <strong>Spyrou K</strong>, Freitas TT, Alcaraz PE. <em>Sensors</em>. 2021;21(22):7482.</span>
+                    <span class="pill-row"><span class="pill">Neuromuscular performance</span></span>
+                </li>
+                <li data-tags="futsal match-demands-and-load reviews">
+                    <span class="pub-title">Physical and physiological match-play demands and player characteristics in futsal: a systematic review</span>
+                    <span class="pub-meta"><strong>Spyrou K</strong>, Freitas TT, Marín-Cascales E, Alcaraz PE. <em>Frontiers in Psychology</em>. 2020;11:569897.</span>
+                    <span class="pill-row"><span class="pill">Futsal</span><span class="pill">Match demands and load</span><span class="pill">Reviews</span></span>
+                </li>
+            </ul>
         </div>
     </section>
-
+ 
     <!-- the next section goes here -->
      
     <!-- ============ PHD CANDIDATES ============ -->
@@ -357,5 +711,46 @@
     })();
 </script>
  
+<script>
+    // Filter and search for the publications list
+    (function () {
+        var chips = document.querySelectorAll('.chip');
+        var items = document.querySelectorAll('#pub-all li');
+        var search = document.getElementById('pub-search');
+        var count = document.getElementById('pub-count');
+        var active = 'none';
+ 
+        function apply() {
+            var q = search.value.trim().toLowerCase();
+            var shown = 0;
+            items.forEach(function (li) {
+                var tagOk = active === 'all' || (active === 'none' && q !== '') || (' ' + li.dataset.tags + ' ').indexOf(' ' + active + ' ') > -1;
+                var textOk = !q || li.textContent.toLowerCase().indexOf(q) > -1;
+                li.hidden = !(tagOk && textOk);
+                if (!li.hidden) shown++;
+            });
+            count.textContent = (active === 'none' && q === '')
+                ? 'Select a topic, or press All, to show the publications.'
+                : 'Showing ' + shown + ' of ' + items.length + ' publications';
+        }
+ 
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                active = chip.dataset.filter;
+                chips.forEach(function (c) {
+                    var on = c === chip;
+                    c.classList.toggle('active', on);
+                    c.setAttribute('aria-pressed', on ? 'true' : 'false');
+                });
+                apply();
+            });
+        });
+ 
+        search.addEventListener('input', apply);
+        apply();
+    })();
+</script>
+ 
 </body>
 </html>
+ 
